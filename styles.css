@@ -1,0 +1,20 @@
+h1 {
+  padding-top: 20px;
+}
+header {
+    text-align: center;
+    color: #fff;
+    background-image: url("img/night-sky.jpg");
+    background-size: cover;
+    padding-bottom: 40px;
+}
+body {
+  background-color: gray;
+}
+input {
+  width: 100%;
+}
+button {
+  width: 100%;
+  font-weight: bold;
+}

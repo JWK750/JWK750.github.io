@@ -18,13 +18,75 @@
 			  src="http://code.jquery.com/jquery-3.3.1.min.js"
 			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 			  crossorigin="anonymous"></script>
+    <!-- Custom Styles -->
+    <link href="styles.css" rel="stylesheet">
     <!-- Title -->
     <title> NASA Image Archive Search </title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="img/nasa-icon.png">
+    <link rel="shortcut icon" type="image/png" href="img/nasa-logo.png">
   </head>
 
   <body>
-    <h1>First Commit</h1>
+    <header>
+
+      <div class="container-fluid">
+        <h1>NASA Image Archive Search</h1>
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-6 col-md-3">
+            <img src="img/nasa-logo.png" class="img-fluid" alt="NASA Logo">
+          </div>
+        </div>
+        <!-- Search Input Boxes -->
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-12 col-md-6">
+            <input id="q" type="text" class="input-md" placeholder="General Search">
+          </div>
+        </div>
+
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-6 col-md-3">
+            <input id="title" type="text" class="input-lg" placeholder="Title">
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <input id="description" type="text" class="input-lg" placeholder="Description">
+          </div>
+        </div>
+
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-4 col-md-2">
+            <input id="center" type="text" class="input-lg" placeholder="NASA Center">
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <input id="location" type="text" class="input-lg" placeholder="Location">
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <input id="photographer" type="text" class="input-lg" placeholder="Photographer">
+          </div>
+        </div>
+
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-6 col-md-3">
+            <input id="year_start" type="text" class="input-lg" placeholder="Year Start">
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <input id="year_end" type="text" class="input-lg" placeholder="Year End">
+          </div>
+        </div>
+
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-12 col-md-6">
+            <button class="btn-lg">Search</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container-fluid">
+        <div id="results" class="row ">
+
+        </div>
+      </div>
+    </section>
   </body>
 </html>
