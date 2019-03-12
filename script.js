@@ -7,13 +7,17 @@ var pageNumber = 1;
 const searchURL = 'search?media_type=image';
 
 const searchButton = document.querySelector("#search");
-const prevButton = document.querySelector("#previous");
-const nextButton = document.querySelector("#next");
+const prevButton = document.querySelector(".previous");
+const nextButton = document.querySelector(".next");
 
 const inputBoxes = document.querySelectorAll("input");
-const displayPanel = document.querySelector("#results");
 
-searchButton.addEventListener('click', fetchResults);
+const displayPanel = document.querySelector("#results");
+const column0 = document.querySelector("#col0");
+const column1 = document.querySelector("#col1");
+const columns = [column0,column1];
+
+searchButton.addEventListener('click', searchCall);
 prevButton.addEventListener('click', previousPage);
 nextButton.addEventListener('click', nextPage);
 
@@ -42,17 +46,29 @@ function fetchResults(e) {
 }
 
 function displayResults(json) {
-  while (displayPanel.firstChild) {
-    displayPanel.removeChild(displayPanel.firstChild);
+  prevButton.style.display = "inline";
+  nextButton.style.display = "inline";
+  for (var j = 0; j < columns.length; j++){
+    while (columns[j].firstChild) {
+      columns[j].removeChild(columns[j].firstChild);
+    }
   }
+  /*while (displayPanel.firstChild) {
+    displayPanel.removeChild(displayPanel.firstChild);
+  }*/
 
   var images = json.collection.items;
 
   for (var i = 0; i < images.length; i++) {
     var img = document.createElement('img');
     img.src = images[i].links[0]["href"];
-    displayPanel.appendChild(img);
+    columns[i%2].appendChild(img);
   }
+}
+
+function searchCall(e){
+  pageNumber = 1;
+  fetchResults(e);
 }
 
 function nextPage(e){

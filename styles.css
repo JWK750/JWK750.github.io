@@ -18,3 +18,15 @@ button {
   width: 100%;
   font-weight: bold;
 }
+
+img {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+.previous {
+  display: none;
+}
+.next{
+  display: none;
+}
