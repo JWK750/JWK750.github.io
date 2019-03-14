@@ -75,6 +75,7 @@ function displayResults(json) {
     anc.innerHTML = '<img src="'+images[i].links[0]["href"]+'" class="img-fluid thumbnail">';
     columns[i%columns.length].appendChild(anc);
   }
+  displayPanel.scrollIntoView();
 }
 
 function createCaption(image){
