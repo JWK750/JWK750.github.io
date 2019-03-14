@@ -13,9 +13,16 @@ const nextButton = document.querySelector(".next");
 const inputBoxes = document.querySelectorAll("input");
 
 const displayPanel = document.querySelector("#results");
-const column0 = document.querySelector("#col0");
-const column1 = document.querySelector("#col1");
-const columns = [column0,column1];
+var columns = [];
+
+
+// Create 6 columns for images
+for (var i = 0; i < 6; i++){
+  var column = document.createElement("div");
+  column.className = "col-md-2";
+  columns[i] = column;
+  displayPanel.appendChild(column);
+}
 
 searchButton.addEventListener('click', searchCall);
 prevButton.addEventListener('click', previousPage);
@@ -53,16 +60,13 @@ function displayResults(json) {
       columns[j].removeChild(columns[j].firstChild);
     }
   }
-  /*while (displayPanel.firstChild) {
-    displayPanel.removeChild(displayPanel.firstChild);
-  }*/
 
   var images = json.collection.items;
 
   for (var i = 0; i < images.length; i++) {
     var img = document.createElement('img');
     img.src = images[i].links[0]["href"];
-    columns[i%2].appendChild(img);
+    columns[i%columns.length].appendChild(img);
   }
 }
 
