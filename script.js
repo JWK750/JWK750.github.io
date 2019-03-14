@@ -12,9 +12,12 @@ const nextButton = document.querySelector(".next");
 
 const inputBoxes = document.querySelectorAll("input");
 
+const header = document.querySelector("header");
 const displayPanel = document.querySelector("#results");
 var columns = [];
 
+console.log(screen.height);
+header.setAttribute("height", screen.height);
 
 // Create 6 columns for images
 for (var i = 0; i < 6; i++){
@@ -43,6 +46,7 @@ function createSearchAddress() {
 }
 
 function fetchResults(e) {
+  // Obtain json after search
   e.preventDefault();
 
   fetch(createSearchAddress()).then(function(result){
@@ -64,10 +68,30 @@ function displayResults(json) {
   var images = json.collection.items;
 
   for (var i = 0; i < images.length; i++) {
-    var img = document.createElement('img');
-    img.src = images[i].links[0]["href"];
-    columns[i%columns.length].appendChild(img);
+    var anc = document.createElement('a');
+    anc.setAttribute("href", images[i].links[0]["href"]);
+    anc.setAttribute("data-lightbox", "lightbox");
+    anc.setAttribute("data-title", createCaption(images[i]));
+    anc.innerHTML = '<img src="'+images[i].links[0]["href"]+'" class="img-fluid thumbnail">';
+    columns[i%columns.length].appendChild(anc);
   }
+}
+
+function createCaption(image){
+  var caption = "";
+  if(image.data[0]["title"]){
+    caption += '<div class="title"><h5>'+image.data[0]["title"]+'</h5></div>';
+  }
+  if(image.data[0]["center"]){
+    caption += '<div class="title"><h6>NASA Center: '+image.data[0]["center"]+'</h6></div>';
+  }
+  if(image.data[0]["center"]){
+    caption += '<div class="title"><h6>Date: '+image.data[0]["date_created"].substr(0,10)+'</h6></div>';
+  }
+  if(image.data[0]["description"]){
+    caption += '<div class="title">'+image.data[0]["description"]+'</div>';
+  }
+  return caption;
 }
 
 function searchCall(e){

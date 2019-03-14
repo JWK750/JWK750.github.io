@@ -18,6 +18,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
         crossorigin="anonymous"></script>
+    <!-- LightBox CDN Imports -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css"
+        integrity="sha256-auPoJwk/+RK6KSkib92Dkq1Y5hEkZvKtvSwucs15Skg="
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"
+        integrity="sha256-DiHJ7hbvMejsMyP76bpVWacb5HSHQ2sQlrJV8n7KEvA="
+        crossorigin="anonymous"></script>
     <!-- Custom Styles -->
     <link href="styles.css" rel="stylesheet">
     <!-- Custom JavaScript -->
@@ -85,18 +92,20 @@
 
     <section>
       <div class="container-fluid">
-        <div class="row no-gutters">
-          <div class="col-sm-6">
-            <button class="previous">Previous 100 Images</button>
-          </div>
-          <div class="col-sm-6">
-            <button class="next">Next 100 Images</button>
-          </div>
-        </div>
 
         <div id="results" class="row ">
 
 
+        </div>
+
+
+        <div class="row no-gutters">
+          <div class="col-sm-6">
+            <button class="btn-large previous">Previous 100 Images</button>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn-large next">Next 100 Images</button>
+          </div>
         </div>
 
       </div>
