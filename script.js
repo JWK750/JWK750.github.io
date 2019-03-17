@@ -16,8 +16,6 @@ const header = document.querySelector("header");
 const displayPanel = document.querySelector("#results");
 var columns = [];
 
-console.log(screen.height);
-header.setAttribute("height", screen.height);
 
 // Create 6 columns for images
 for (var i = 0; i < 6; i++){
@@ -54,19 +52,24 @@ function fetchResults(e) {
   }).then(function(json){
     displayResults(json);
   })
+  displayPanel.scrollIntoView();
 }
 
 function displayResults(json) {
+
+  //Display navigation buttons
   prevButton.style.display = "inline";
   nextButton.style.display = "inline";
+  //Clear previous search results(if any)
   for (var j = 0; j < columns.length; j++){
     while (columns[j].firstChild) {
       columns[j].removeChild(columns[j].firstChild);
     }
   }
 
-  var images = json.collection.items;
+  var images = json.collection.items:
 
+  // Create clickable images with links to metadata
   for (var i = 0; i < images.length; i++) {
     var anc = document.createElement('a');
     anc.setAttribute("href", images[i].links[0]["href"]);
@@ -75,10 +78,11 @@ function displayResults(json) {
     anc.innerHTML = '<img src="'+images[i].links[0]["href"]+'" class="img-fluid thumbnail">';
     columns[i%columns.length].appendChild(anc);
   }
-  displayPanel.scrollIntoView();
+
 }
 
 function createCaption(image){
+  // Display metadata when picture is clicked
   var caption = "";
   if(image.data[0]["title"]){
     caption += '<div class="title"><h5>'+image.data[0]["title"]+'</h5></div>';
