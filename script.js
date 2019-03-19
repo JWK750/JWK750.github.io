@@ -67,7 +67,7 @@ function displayResults(json) {
     }
   }
 
-  var images = json.collection.items:
+  var images = json.collection.items;
 
   // Create clickable images with links to metadata
   for (var i = 0; i < images.length; i++) {
